@@ -2,14 +2,19 @@
 clear
 
 # Vim pluggins
-echo "1. Reformat Vim Pluggins"
+echo "Reformats Vim Pluggins"
 rm -rf ~/.vim
 cd ~
 
-git clone https://github.com/Pragtechnologies/.vim.git
+git clone git@github.com:Pragtechnologies/.vim.git
 cd ~/.vim
 bower install
 mv bundle/vim-pathogen/autoload .
+
+echo "Compile Command-T"
+cd ~/.vim/bundle/Command-T/ruby/command-t
+ruby extconf.rb make
+rake make
 
 
 # All set
