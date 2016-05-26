@@ -16,6 +16,10 @@ cd ~/.vim/bundle/Command-T/ruby/command-t
 ruby extconf.rb make
 rake make
 
+echo "Compile VimProc"
+cd ~/.vim/bundle/vimproc.vim
+make
+
 
 # All set
 clear
