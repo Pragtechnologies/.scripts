@@ -29,6 +29,7 @@ make
 
 echo "Copy Vimrc and Bashrc"
 rm -rf ~/.scripts
+cd ~
 git clone git@github.com:Pragtechnologies/.scripts.git
 rm ~/.vimrc
 ln -P ~/.scripts/.vimrc ~/.vimrc
