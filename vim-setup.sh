@@ -1,12 +1,20 @@
 # Start's the installation
 clear
 
+# Backup files
+rm -rf ~/.vim_backups
+mkdir ~/.vim_backups
+
+mv ~/.vim ~/.vim_backups
+mv ~/.vimrc ~/.vim_backups
+echo "Backup complete"
+
 # Vim pluggins
 echo "Reformats Vim Pluggins"
 rm -rf ~/.vim
 cd ~
 
-git clone git@github.com:Pragtechnologies/.vim.git
+git clone git@github.com:Pragtechnologies/.vim.git ~
 cd ~/.vim
 bower install
 mv bundle/vim-pathogen/autoload .
@@ -22,8 +30,7 @@ make
 
 echo "Copy Vimrc and Bashrc"
 rm -rf ~/.scripts
-mkdir ~/.scripts
-git clone git@github.com:Pragtechnologies/.scripts.git ~/.scripts
+git clone git@github.com:Pragtechnologies/.scripts.git ~
 rm ~/.vimrc
 ln -P ~/.scripts/.vimrc ~/.vimrc
 

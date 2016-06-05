@@ -175,10 +175,10 @@ function! RunNearestPhoenixTest()
     call RunPhoenixTestFile(":" . spec_line_number)
 endfunction
 
-" Run this file
-map <leader>tt :call RunPhoenixTestFile()<cr>
 " Run only the example under the cursor
 map <leader>tl :call RunNearestPhoenixTest()<cr>
+" Run this file
+map <leader>tt :call RunPhoenixTestFile()<cr>
 " Run all test files
 map <leader>ta :call RunPhoenixTests('')<cr>
 
