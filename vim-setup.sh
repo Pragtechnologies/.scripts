@@ -5,12 +5,13 @@ clear
 rm -rf ~/.vim_backups
 mkdir ~/.vim_backups
 
-mv ~/.vim ~/.vim_backups
-mv ~/.vimrc ~/.vim_backups
+cp -rf ~/.vim ~/.vim_backups
+cp ~/.vimrc ~/.vim_backups
 echo "Backup complete"
 
 # Vim pluggins
 echo "Reformats Vim Pluggins"
+rm -rf ~/.vim
 cd ~
 git clone git@github.com:Pragtechnologies/.vim.git
 cd ~/.vim
@@ -28,10 +29,9 @@ make
 
 echo "Copy Vimrc and Bashrc"
 rm -rf ~/.scripts
-git clone git@github.com:Pragtechnologies/.scripts.git ~
+git clone git@github.com:Pragtechnologies/.scripts.git
 rm ~/.vimrc
 ln -P ~/.scripts/.vimrc ~/.vimrc
-
 
 # All set
 echo "All set!"
