@@ -24,9 +24,11 @@ For more information, you can check instructions here [Ubutu Setup](http://blog.
 
 #Setup
 Preq:
+
 1. Ruby 2.2.0
 2. Node
 3. Bower
+
 For more information, check the instructions here [Vim Setup](https://github.com/Pragtechnologies/.vim)
 
 To run the autosetup:
