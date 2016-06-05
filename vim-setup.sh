@@ -20,7 +20,13 @@ echo "Compile VimProc"
 cd ~/.vim/bundle/vimproc.vim
 make
 
+echo "Copy Vimrc and Bashrc"
+rm -rf ~/.scripts
+mkdir ~/.scripts
+git clone git@github.com:Pragtechnologies/.scripts.git ~/.scripts
+rm ~/.vimrc
+ln -P ~/.scripts/.vimrc ~/.vimrc
+
 
 # All set
-clear
 echo "All set!"
