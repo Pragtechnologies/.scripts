@@ -18,3 +18,6 @@ Do a quick setup of your Vim using the following plugins:
 15. vimproc.vim - Async execution library for vim
 16. vim-jsx - React syntax
 17. vim-slim - Slim template syntax
+
+
+For more information, you can check instructions here [Ubutu Setup](http://blog.pragtechnologies.com/ubuntu-dev-setup/).
