@@ -32,7 +32,7 @@ cd ~
 rm -rf ~/.scripts
 git clone git@github.com:Pragtechnologies/.scripts.git
 rm ~/.vimrc
-ln -P ~/.scripts/.vimrc ~/.vimrc
+ln -s ~/.scripts/.vimrc ~/.vimrc
 
 # All set
 echo "All set!"
