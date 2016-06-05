@@ -297,7 +297,7 @@ map <leader>p :PromoteToLet<cr>
 autocmd FileType apache setlocal commentstring=#\ %s
 
 "Command-T ignore
-set wildignore=node_modules/**,dist/**,tmp/**
+set wildignore=node_modules/**,dist/**,tmp/**,_build/**,bower_components/**
 
 "Read .config files as XML
 au BufRead,BufNewFile *.config     set filetype=xml
