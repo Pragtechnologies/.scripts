@@ -301,3 +301,6 @@ set wildignore=node_modules/**,dist/**,tmp/**,_build/**,bower_components/**
 
 "Read .config files as XML
 au BufRead,BufNewFile *.config     set filetype=xml
+
+"Trigger JSX syntax for .js files
+let g:jsx_ext_required = 0
