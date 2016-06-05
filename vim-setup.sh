@@ -11,10 +11,8 @@ echo "Backup complete"
 
 # Vim pluggins
 echo "Reformats Vim Pluggins"
-rm -rf ~/.vim
 cd ~
-
-git clone git@github.com:Pragtechnologies/.vim.git ~
+git clone git@github.com:Pragtechnologies/.vim.git
 cd ~/.vim
 bower install
 mv bundle/vim-pathogen/autoload .
