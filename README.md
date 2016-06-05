@@ -21,3 +21,15 @@ Do a quick setup of your Vim using the following plugins:
 
 
 For more information, you can check instructions here [Ubutu Setup](http://blog.pragtechnologies.com/ubuntu-dev-setup/).
+
+#Setup
+Preq:
+1. Ruby 2.2.0
+2. Node
+3. Bower
+For more information, check the instructions here [Vim Setup](https://github.com/Pragtechnologies/.vim)
+
+To run the autosetup:
+```
+curl -o- https://raw.githubusercontent.com/Pragtechnologies/.scripts/master/vim-setup.sh | bash
+```
