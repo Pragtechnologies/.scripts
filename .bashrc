@@ -205,3 +205,9 @@ elif type compctl &>/dev/null; then
   compctl -K _ng_completion ng
 fi
 ###-end-ng-completion###
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# added by travis gem
+[ -f /home/noel/.travis/travis.sh ] && source /home/noel/.travis/travis.sh
