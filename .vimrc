@@ -85,6 +85,8 @@ map <leader>em :CommandTFlush<cr>\|:CommandT app/models<cr>
 map <leader>eh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
 map <leader>ec :CommandTFlush<cr>\|:CommandT app/controllers<cr>
 map <leader>eo :CommandTFlush<cr>\|:CommandT app/components<cr>
+map <leader>eu :CommandTFlush<cr>\|:CommandT app/utils<cr>
+map <leader>ei :CommandTFlush<cr>\|:CommandT app/initializers<cr>
 
 " Phoenix mappings
 map <leader>pm :CommandTFlush<cr>\|:CommandT web/models<cr>
