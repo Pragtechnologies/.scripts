@@ -56,7 +56,7 @@ map <leader>z <C-Z>
  map <leader>tm :tabmov
 
 set mouse=ia "  Enable your track pad interaction
-set clipboard=unnamedplus
+set clipboard=unnamed
 vnoremap <C-c> "*y
 set antialias " Macvim: smooth fonts
 "set listchars=tab:▸\
@@ -84,10 +84,13 @@ map <leader>es :CommandTFlush<cr>\|:CommandT public/css<cr>
 " Phoenix mappings
 map <leader>pm :CommandTFlush<cr>\|:CommandT web/models<cr>
 map <leader>ps :CommandTFlush<cr>\|:CommandT web/static<cr>
-map <leader>pt :CommandTFlush<cr>\|:CommandT web/templates<cr>
+map <leader>pp :CommandTFlush<cr>\|:CommandT web/templates<cr>
+map <leader>pt :CommandTFlush<cr>\|:CommandT test<cr>
 map <leader>pn :CommandTFlush<cr>\|:CommandT web/channels<cr>
 map <leader>pc :CommandTFlush<cr>\|:CommandT web/controllers<cr>
 map <leader>pv :CommandTFlush<cr>\|:CommandT web/views<cr>
+map <leader>pr :vsplit web/router.ex<cr>
+
 
 " Map windows
 map <leader>mv :vsplit <cr>
@@ -189,7 +192,7 @@ function! RunTests(filename)
     " Write the file and run tests for the given filename
     :w
     :silent !echo;echo;echo;echo;echo
-    exec ":!time spring rspec " . a:filename
+    exec ":!time bundle exec spring rspec " . a:filename
 endfunction
 
 function! SetTestFile()
@@ -297,7 +300,8 @@ map <leader>p :PromoteToLet<cr>
 autocmd FileType apache setlocal commentstring=#\ %s
 
 "Command-T ignore
-set wildignore=node_modules/**,dist/**,tmp/**
+set wildignore=node_modules/**,dist/**,tmp/**,_build/**,deps/**
 
 "Read .config files as XML
 au BufRead,BufNewFile *.config     set filetype=xml
+autocmd BufNewFile,BufRead *.slim set ft=slim
