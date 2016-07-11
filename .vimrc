@@ -76,10 +76,17 @@ map <leader>gg :vsplit Gemfile<cr>
 map <leader>gl :left :vsplit config/locales/en.yml<cr>
 map <leader>ge :CommandTFlush<cr>\|:CommandT config<cr>
 
-" Map Node commands
-map <leader>ev :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>ej :CommandTFlush<cr>\|:CommandT public/js<cr>
-map <leader>es :CommandTFlush<cr>\|:CommandT public/css<cr>
+" Ember commands
+map <leader>ep :CommandTFlush<cr>\|:CommandT app/templates<cr>
+map <leader>et :CommandTFlush<cr>\|:CommandT tests<cr>
+map <leader>er :CommandTFlush<cr>\|:CommandT app/routes<cr>
+map <leader>es :CommandTFlush<cr>\|:CommandT app/styles<cr>
+map <leader>em :CommandTFlush<cr>\|:CommandT app/models<cr>
+map <leader>eh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+map <leader>ec :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+map <leader>eo :CommandTFlush<cr>\|:CommandT app/components<cr>
+map <leader>eu :CommandTFlush<cr>\|:CommandT app/utils<cr>
+map <leader>ei :CommandTFlush<cr>\|:CommandT app/initializers<cr>
 
 " Phoenix mappings
 map <leader>pm :CommandTFlush<cr>\|:CommandT web/models<cr>
@@ -90,7 +97,6 @@ map <leader>pn :CommandTFlush<cr>\|:CommandT web/channels<cr>
 map <leader>pc :CommandTFlush<cr>\|:CommandT web/controllers<cr>
 map <leader>pv :CommandTFlush<cr>\|:CommandT web/views<cr>
 map <leader>pr :vsplit web/router.ex<cr>
-
 
 " Map windows
 map <leader>mv :vsplit <cr>
@@ -300,8 +306,11 @@ map <leader>p :PromoteToLet<cr>
 autocmd FileType apache setlocal commentstring=#\ %s
 
 "Command-T ignore
-set wildignore=node_modules/**,dist/**,tmp/**,_build/**,deps/**
+set wildignore=node_modules/**,dist/**,tmp/**,_build/**,deps/**,bower_components/**
 
 "Read .config files as XML
 au BufRead,BufNewFile *.config     set filetype=xml
 autocmd BufNewFile,BufRead *.slim set ft=slim
+
+"Trigger JSX syntax for .js files
+let g:jsx_ext_required = 0
