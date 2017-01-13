@@ -96,7 +96,7 @@ map <leader>pt :CommandTFlush<cr>\|:CommandT test<cr>
 map <leader>pn :CommandTFlush<cr>\|:CommandT web/channels<cr>
 map <leader>pc :CommandTFlush<cr>\|:CommandT web/controllers<cr>
 map <leader>pv :CommandTFlush<cr>\|:CommandT web/views<cr>
-map <leader>pr :vsplit web/router.ex<cr>
+map <leader>pr :vsplit web/subdomain_router.ex<cr>
 
 " Map windows
 map <leader>mv :vsplit <cr>
@@ -190,6 +190,39 @@ map <leader>tl :call RunNearestPhoenixTest()<cr>
 map <leader>tt :call RunPhoenixTestFile()<cr>
 " Run all test files
 map <leader>ta :call RunPhoenixTests('')<cr>
+
+" Run Credo in Project
+function! RunPhoenixCredo(filename)
+    " Write the file and run tests for the given filename
+    :w
+    :silent !echo;echo;echo;echo;echo
+    exec ":!time mix credo --strict " . a:filename
+endfunction
+
+" Run Credo in File
+function! RunPhoenixCredoFile(...)
+    if a:0
+        let command_suffix = a:1
+    else
+        let command_suffix = ""
+    endif
+
+    call SetTestFile()
+    call RunPhoenixCredo(t:grb_test_file . command_suffix)
+endfunction
+
+" Run Credo in Line
+function! RunNearestCredoLine()
+    let spec_line_number = line('.')
+    call RunPhoenixCredoFile(":" . spec_line_number)
+endfunction
+
+" Run only the example under the cursor
+map <leader>yl :call RunNearestCredoLine()<cr>
+" Run this file
+map <leader>yy :call RunPhoenixCredoFile()<cr>
+" Run all test files
+map <leader>ya :call RunPhoenixCredo('')<cr>
 
 " " Test helpers from Gary Bernhardt's screen cast:
 " " https://www.destroyallsoftware.com/screencasts/catalog/file-navigation-in-vim
@@ -306,7 +339,7 @@ map <leader>p :PromoteToLet<cr>
 autocmd FileType apache setlocal commentstring=#\ %s
 
 "Command-T ignore
-set wildignore=node_modules/**,dist/**,tmp/**,_build/**,bower_components/**
+set wildignore=node_modules/**,dist/**,tmp/**,_build/**,bower_components/**,deps/**,_build/**,rel/releases/***
 
 "Read .config files as XML
 au BufRead,BufNewFile *.config     set filetype=xml
