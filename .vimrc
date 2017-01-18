@@ -56,7 +56,7 @@ map <leader>z <C-Z>
  map <leader>tm :tabmov
 
 set mouse=ia "  Enable your track pad interaction
-set clipboard=unnamedplus
+set clipboard=unnamed
 vnoremap <C-c> "*y
 set antialias " Macvim: smooth fonts
 "set listchars=tab:▸\
@@ -231,7 +231,7 @@ function! RunTests(filename)
     " Write the file and run tests for the given filename
     :w
     :silent !echo;echo;echo;echo;echo
-    exec ":!time spring rspec " . a:filename
+    exec ":!time bundle exec spring rspec " . a:filename
 endfunction
 
 function! SetTestFile()
@@ -343,6 +343,18 @@ set wildignore=node_modules/**,dist/**,tmp/**,_build/**,bower_components/**,deps
 
 "Read .config files as XML
 au BufRead,BufNewFile *.config     set filetype=xml
+autocmd BufNewFile,BufRead *.slim set ft=slim
 
 "Trigger JSX syntax for .js files
 let g:jsx_ext_required = 0
+
+"Trigger Mustache syntax
+let g:mustache_abbreviations = 1
+au BufRead,BufNewFile *.hbs     set filetype=mustache
+
+"Stores the backup and swp not in the current dir
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
+
+"Autocomlete html tags
+:set omnifunc=htmlcomplete#CompleteTags
