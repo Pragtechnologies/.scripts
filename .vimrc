@@ -352,9 +352,5 @@ let g:jsx_ext_required = 0
 let g:mustache_abbreviations = 1
 au BufRead,BufNewFile *.hbs     set filetype=mustache
 
-"Stores the backup and swp not in the current dir
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
-
 "Autocomlete html tags
 :set omnifunc=htmlcomplete#CompleteTags
