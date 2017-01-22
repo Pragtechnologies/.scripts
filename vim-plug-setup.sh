@@ -6,7 +6,8 @@ cd ~
 rm -rf ~/.vim_backups
 mkdir ~/.vim_backups
 
-cp -rf ~/.vim ~/.vim_backups cp ~/.vimrc ~/.vim_backups
+cp -rf ~/.vim ~/.vim_backups
+cp ~/.vimrc ~/.vim_backups
 echo "Backup complete"
 
 # Get shell scripts
