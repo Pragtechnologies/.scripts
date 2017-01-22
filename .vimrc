@@ -1,6 +1,28 @@
+"Add Plug
+call plug#begin('~/.vim/plugged')
 
-"add Pathogen
-execute pathogen#infect()
+Plug 'wincent/Command-T'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'leafgarland/typescript-vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'isRuslan/vim-es6'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'tpope/vim-markdown'
+Plug 'Townk/vim-autoclose'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/closetag.vim'
+Plug 'elixir-lang/vim-elixir'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'mxw/vim-jsx'
+Plug 'slim-template/vim-slim'
+Plug 'heartsentwined/vim-emblem'
+Plug 'digitaltoad/vim-pug'
+Plug 'janko-m/vim-test'
+call plug#end()
+
+
 syntax on
 filetype plugin indent on
 
@@ -45,15 +67,15 @@ map <leader>so :so %<cr>
 " Map suspend
 map <leader>z <C-Z>
 " Tab mappings.
- map <leader>tt :tabnew<cr>
- map <leader>te :tabedit
- map <leader>tc :tabclose<cr>
- map <leader>to :tabonly<cr>
- map <leader>tn :tabnext<cr>
- map <leader>tp :tabprevious<cr>
- map <leader>tf :tabfirst<cr>
- map <leader>tl :tablast<cr>
- map <leader>tm :tabmov
+map <leader>tt :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>to :tabonly<cr>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprevious<cr>
+map <leader>tf :tabfirst<cr>
+map <leader>tl :tablast<cr>
+map <leader>tm :tabmov
 
 set mouse=ia "  Enable your track pad interaction
 set clipboard=unnamed
@@ -96,7 +118,26 @@ map <leader>pt :CommandTFlush<cr>\|:CommandT test<cr>
 map <leader>pn :CommandTFlush<cr>\|:CommandT web/channels<cr>
 map <leader>pc :CommandTFlush<cr>\|:CommandT web/controllers<cr>
 map <leader>pv :CommandTFlush<cr>\|:CommandT web/views<cr>
-map <leader>pr :vsplit web/subdomain_router.ex<cr>
+map <leader>pr :vsplit web/router.ex<cr>
+
+" Phoenix Umbrella mappings
+" Db layer
+map <leader>uds :CommandTFlush<cr>\|:CommandT apps/db/lib/schemas<cr>
+map <leader>udl :CommandTFlush<cr>\|:CommandT apps/db/lib<cr>
+map <leader>udt :CommandTFlush<cr>\|:CommandT apps/db/test<cr>
+map <leader>udg :CommandTFlush<cr>\|:CommandT apps/db/config<cr>
+map <leader>udf :CommandTFlush<cr>\|:CommandT apps/db<cr>
+
+" UI layer
+map <leader>uus :CommandTFlush<cr>\|:CommandT apps/ui/web/static<cr>
+map <leader>uup :CommandTFlush<cr>\|:CommandT apps/ui/web/templates<cr>
+map <leader>uut :CommandTFlush<cr>\|:CommandT apps/ui/test<cr>
+map <leader>uun :CommandTFlush<cr>\|:CommandT apps/ui/web/channels<cr>
+map <leader>uuc :CommandTFlush<cr>\|:CommandT apps/ui/web/controllers<cr>
+map <leader>uuv :CommandTFlush<cr>\|:CommandT apps/ui/web/views<cr>
+map <leader>uug :CommandTFlush<cr>\|:CommandT apps/ui/config<cr>
+map <leader>uuf :CommandTFlush<cr>\|:CommandT apps/ui<cr>
+map <leader>uur :vsplit apps/ui/web/router.ex<cr>
 
 " Map windows
 map <leader>mv :vsplit <cr>
@@ -111,36 +152,36 @@ map <leader>wl <C-W>l <cr>
 map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
 
 " Mappings to access buffers (don't use "\p" because a
- " " delay before pressing "p" would accidentally paste).
- " " \l       : list buffers
- " " \b \f \g : go back/forward/last-used
- " " \1 \2 \3 : go to buffer 1/2/3 etc
-  nnoremap <Leader>l :ls<CR>
-  nnoremap <Leader>bf :bp<CR>
-  nnoremap <Leader>bn :bn<CR>
-  nnoremap <Leader>g :e#<CR>
-  nnoremap <Leader>1 :1b<CR>
-  nnoremap <Leader>2 :2b<CR>
-  nnoremap <Leader>3 :3b<CR>
-  nnoremap <Leader>4 :4b<CR>
-  nnoremap <Leader>5 :5b<CR>
-  nnoremap <Leader>6 :6b<CR>
-  nnoremap <Leader>7 :7b<CR>
-  nnoremap <Leader>8 :8b<CR>
-  nnoremap <Leader>9 :9b<CR>
-  nnoremap <Leader>0 :10b<CR>
+" " delay before pressing "p" would accidentally paste).
+" " \l       : list buffers
+" " \b \f \g : go back/forward/last-used
+" " \1 \2 \3 : go to buffer 1/2/3 etc
+nnoremap <Leader>l :ls<CR>
+nnoremap <Leader>bf :bp<CR>
+nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>g :e#<CR>
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
 
 " " Opens an edit command with the path of the currently edited file filled
-  " in
-  " " Normal mode: <Leader>e
+" in
+" " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>w :w <C-R>=expand("%:p:h") . "/" <CR>
 
 " Make it easy to navigate on insert mode
- imap <C-k> <Up>
- imap <C-j> <Down>
- imap <C-h> <Left>
- imap <C-l> <Right>
+imap <C-k> <Up>
+imap <C-j> <Down>
+imap <C-h> <Left>
+imap <C-l> <Right>
 
 " Folding
 set foldmethod=indent
@@ -156,65 +197,96 @@ map <leader>n :CommandTFlush<cr>\|:NERDTreeToggle<cr>
 
 " Phoenix Test helpers
 function! RunPhoenixTests(filename)
-    " Write the file and run tests for the given filename
-    :w
-    :silent !echo;echo;echo;echo;echo
-    exec ":!time mix test " . a:filename
+  " Write the file and run tests for the given filename
+  :w
+  :silent !echo;echo;echo;echo;echo
+
+  call ExecuteUmbrellaTest(a:filename)
+
 endfunction
 
 function! RunPhoenixTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
+  if a:0
+    let command_suffix = a:1
+  else
+    let command_suffix = ""
+  endif
 
-    " Run the tests for the previously-marked file.
-    let in_spec_file = match(expand("%"), '_test.exs$') != -1
-    if in_spec_file
-        call SetTestFile()
-    elseif !exists("t:grb_test_file")
-        return
-    end
-    call RunPhoenixTests(t:grb_test_file . command_suffix)
+  " Run the tests for the previously-marked file.
+  let in_spec_file = match(expand("%"), '_test.exs$') != -1
+  if in_spec_file
+    call SetTestFile()
+  elseif !exists("t:grb_test_file")
+    return
+  end
+  call RunPhoenixTests(t:grb_test_file . command_suffix)
 endfunction
 
 function! RunNearestPhoenixTest()
-    let spec_line_number = line('.')
-    call RunPhoenixTestFile(":" . spec_line_number)
+  let spec_line_number = line('.')
+  call RunPhoenixTestFile(":" . spec_line_number)
 endfunction
 
+" Old tests
 " Run only the example under the cursor
-map <leader>tl :call RunNearestPhoenixTest()<cr>
+" map <leader>tl :call RunNearestPhoenixTest()<cr>
 " Run this file
-map <leader>tt :call RunPhoenixTestFile()<cr>
+" map <leader>tt :call RunPhoenixTestFile()<cr>
 " Run all test files
-map <leader>ta :call RunPhoenixTests('')<cr>
+" map <leader>ta :call RunPhoenixTests('')<cr>
+
+" New tests from vim-test
+" Run only the example under the cursor
+nmap <silent> <leader>tn :TestNearest<cr>
+" Run last visit
+nmap <silent> <leader>tl :TestLast<cr>
+" Run visit
+nmap <silent> <leader>tg :TestVisit<cr>
+" Run this file
+nmap <silent> <leader>tt :TestFile<cr>
+" Run all test files
+nmap <silent> <leader>ta :TestSuite<cr>
+
+"""""""""""""""""""""
+" vim-test extensions
+"""""""""""""""""""""
+function! ElixirUmbrellaTransform(cmd) abort
+  if match(a:cmd, 'apps/') != -1
+    return substitute(a:cmd, 'mix test apps/\([^/]*/\)', 'cd apps/\1 \&\& mix test ', '')
+  else
+    return a:cmd
+  end
+endfunction
+
+let g:test#preserve_screen = 0
+let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
+let g:test#transformation = 'elixir_umbrella'
+
 
 " Run Credo in Project
 function! RunPhoenixCredo(filename)
-    " Write the file and run tests for the given filename
-    :w
-    :silent !echo;echo;echo;echo;echo
-    exec ":!time mix credo --strict " . a:filename
+  " Write the file and run tests for the given filename
+  :w
+  :silent !echo;echo;echo;echo;echo
+  exec ":!time mix credo --strict " . a:filename
 endfunction
 
 " Run Credo in File
 function! RunPhoenixCredoFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
+  if a:0
+    let command_suffix = a:1
+  else
+    let command_suffix = ""
+  endif
 
-    call SetTestFile()
-    call RunPhoenixCredo(t:grb_test_file . command_suffix)
+  call SetTestFile()
+  call RunPhoenixCredo(t:grb_test_file . command_suffix)
 endfunction
 
 " Run Credo in Line
 function! RunNearestCredoLine()
-    let spec_line_number = line('.')
-    call RunPhoenixCredoFile(":" . spec_line_number)
+  let spec_line_number = line('.')
+  call RunPhoenixCredoFile(":" . spec_line_number)
 endfunction
 
 " Run only the example under the cursor
@@ -228,37 +300,42 @@ map <leader>ya :call RunPhoenixCredo('')<cr>
 " " https://www.destroyallsoftware.com/screencasts/catalog/file-navigation-in-vim
 " " https://www.destroyallsoftware.com/file-navigation-in-vim.html
 function! RunTests(filename)
-    " Write the file and run tests for the given filename
-    :w
-    :silent !echo;echo;echo;echo;echo
-    exec ":!time bundle exec spring rspec " . a:filename
+  " Write the file and run tests for the given filename
+  :w
+  :silent !echo;echo;echo;echo;echo
+  exec ":!time bundle exec spring rspec " . a:filename
+endfunction
+
+function! ExecuteUmbrellaTest(filename) abort
+  exec ":!time mix test " . a:filename
 endfunction
 
 function! SetTestFile()
-    " Set the spec file that tests will be run for.
-    let t:grb_test_file=@%
+  " Set the spec file that tests will be run for.
+  let t:grb_test_file=@%
 endfunction
 
 function! RunTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
+  if a:0
+    let command_suffix = a:1
+  else
+    let command_suffix = ""
+  endif
 
-    " Run the tests for the previously-marked file.
-    let in_spec_file = match(expand("%"), '_spec.rb$') != -1
-    if in_spec_file
-        call SetTestFile()
-    elseif !exists("t:grb_test_file")
-        return
-    end
-    call RunTests(t:grb_test_file . command_suffix)
+  " Run the tests for the previously-marked file.
+  let in_spec_file = match(expand("%"), '_spec.rb$') != -1
+  call SetTestFile()
+  if in_spec_file
+    call SetTestFile()
+  elseif !exists("t:grb_test_file")
+    return
+  end
+  call RunTests(t:grb_test_file . command_suffix)
 endfunction
 
 function! RunNearestTest()
-    let spec_line_number = line('.')
-    call RunTestFile(":" . spec_line_number)
+  let spec_line_number = line('.')
+  call RunTestFile(":" . spec_line_number)
 endfunction
 
 " Run this file
@@ -296,9 +373,9 @@ augroup vimrcEX
   autocmd FileType text setlocal textwidth=78
   "Jump to last cursor position
   autocmd BufReadPost *
-    \ if line("'\"") > 0  && line("'\"") <= line ("$") |
-    \   exe "normal g'\"" |
-    \ endif
+        \ if line("'\"") > 0  && line("'\"") <= line ("$") |
+        \   exe "normal g'\"" |
+        \ endif
 augroup END
 "Clear the search buffer when hitting return
 :nnoremap <CR> :nohlsearch<cr>
