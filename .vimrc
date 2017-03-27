@@ -20,6 +20,9 @@ Plug 'slim-template/vim-slim'
 Plug 'heartsentwined/vim-emblem'
 Plug 'digitaltoad/vim-pug'
 Plug 'janko-m/vim-test'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'posva/vim-vue'
 call plug#end()
 
 
@@ -78,7 +81,7 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmov
 
 set mouse=ia "  Enable your track pad interaction
-set clipboard=unnamed
+set clipboard=unnamedplus
 vnoremap <C-c> "*y
 set antialias " Macvim: smooth fonts
 "set listchars=tab:▸\
