@@ -432,5 +432,14 @@ let g:jsx_ext_required = 0
 let g:mustache_abbreviations = 1
 au BufRead,BufNewFile *.hbs     set filetype=mustache
 
+"Trigger .conf files
+autocmd BufRead,BufNewFile *.conf setf dosini
+
 "Autocomlete html tags
 :set omnifunc=htmlcomplete#CompleteTags
+
+"Easy navigate vim panes
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
