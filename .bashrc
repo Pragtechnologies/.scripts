@@ -105,27 +105,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-source ~/.bash-git-prompt/gitprompt.sh GIT_PROMPT_ONLY_IN_REPO=1
-
-export NVM_DIR="/home/noel/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
-# Ruby Aliases
-alias b="bundle exec"
-# Git Aliases
+#Git Aliases
 alias gs="git status --short"
 alias go="git checkout "
 alias ga="git add "
@@ -138,76 +118,36 @@ alias gf="git fetch"
 alias l="ls -a"
 alias f="xdg-open"
 
-# Phoenix Aliases
-alias ms="mix phoenix.server"
+alias ms="iex -S mix phoenix.server"
+alias mps="iex -S mix phx.server"
 
-
-###-begin-ng-completion###
-#
-# ng command completion script
-#
-# Installation: ng completion >> ~/.bashrc (or ~/.zshrc)
-#
-
-ng_opts='new init build serve generate autocomplete e2e lint test version'
-init_opts='--dry-run --verbose --blueprint --skip-npm --skip-bower --name'
-new_opts='--dry-run --verbose --blueprint --skip-npm --skip-bower --skip-git --directory'
-build_opts='--environment --output-path --watch --watcher'
-serve_opts='--port --host --proxy --insecure-proxy --watcher --live-reload --live-reload-host
-            --live-reload-port --environment --output-path --ssl --ssl-key --ssl-cert'
-generate_opts='component directive pipe route service'
-test_opts='--watch --browsers --colors --log-level --port --reporters'
-
-if type complete &>/dev/null; then
-  _ng_completion() {
-    local cword pword opts
-
-    COMPREPLY=()
-    cword=${COMP_WORDS[COMP_CWORD]}
-    pword=${COMP_WORDS[COMP_CWORD - 1]}
-
-    case ${pword} in
-      ng) opts=$ng_opts ;;
-      i|init) opts=$init_opts ;;
-      new) opts=$new_opts ;;
-      b|build) opts=$build_opts ;;
-      s|serve|server) opts=$serve_opts ;;
-      g|generate) opts=$generate_opts ;;
-      test) opts=$test_opts ;;
-    esac
-
-    COMPREPLY=( $(compgen -W '${opts}' -- $cword) )
-
-    return 0
-  }
-  complete -o default -F _ng_completion ng
-elif type compctl &>/dev/null; then
-  _ng_completion () {
-    local words cword opts
-    read -Ac words
-    read -cn cword
-    let cword-=1
-
-    case $words[cword] in
-      ng) opts=$ng_opts ;;
-      i|init) opts=$init_opts ;;
-      new) opts=$new_opts ;;
-      b|build) opts=$build_opts ;;
-      s|serve|server) opts=$serve_opts ;;
-      g|generate) opts=$generate_opts ;;
-      test) opts=$test_opts ;;
-    esac
-
-    setopt shwordsplit
-    reply=($opts)
-    unset shwordsplit
-  }
-  compctl -K _ng_completion ng
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
 fi
-###-end-ng-completion###
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
-# added by travis gem
-[ -f /home/noel/.travis/travis.sh ] && source /home/noel/.travis/travis.sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+source ~/.bash-git-prompt/gitprompt.sh GIT_PROMPT_ONLY_IN_REPO=1
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/noel_delcastillo/Downloads/google-cloud-sdk/path.bash.inc' ]; then source '/home/noel_delcastillo/Downloads/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/noel_delcastillo/Downloads/google-cloud-sdk/completion.bash.inc' ]; then source '/home/noel_delcastillo/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+source <(kubectl completion bash)
