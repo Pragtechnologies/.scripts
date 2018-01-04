@@ -81,7 +81,7 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmov
 
 set mouse=ia "  Enable your track pad interaction
-set clipboard=unnamedplus
+set clipboard=unnamed
 vnoremap <C-c> "*y
 set antialias " Macvim: smooth fonts
 "set listchars=tab:▸\
