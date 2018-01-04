@@ -125,22 +125,57 @@ map <leader>pr :vsplit web/router.ex<cr>
 
 " Phoenix Umbrella mappings
 " Db layer
-map <leader>uds :CommandTFlush<cr>\|:CommandT apps/db/lib/schemas<cr>
-map <leader>udl :CommandTFlush<cr>\|:CommandT apps/db/lib<cr>
-map <leader>udt :CommandTFlush<cr>\|:CommandT apps/db/test<cr>
-map <leader>udg :CommandTFlush<cr>\|:CommandT apps/db/config<cr>
-map <leader>udf :CommandTFlush<cr>\|:CommandT apps/db<cr>
+map <leader>uds :CommandTFlush<cr>\|:CommandT apps/data/lib/schemas<cr>
+map <leader>udc :CommandTFlush<cr>\|:CommandT apps/data/lib/contexts<cr>
+map <leader>udl :CommandTFlush<cr>\|:CommandT apps/data/lib<cr>
+map <leader>udt :CommandTFlush<cr>\|:CommandT apps/data/test<cr>
+map <leader>udg :CommandTFlush<cr>\|:CommandT apps/data/config<cr>
+map <leader>udf :CommandTFlush<cr>\|:CommandT apps/data<cr>
 
-" UI layer
-map <leader>uus :CommandTFlush<cr>\|:CommandT apps/ui/web/static<cr>
-map <leader>uup :CommandTFlush<cr>\|:CommandT apps/ui/web/templates<cr>
-map <leader>uut :CommandTFlush<cr>\|:CommandT apps/ui/test<cr>
-map <leader>uun :CommandTFlush<cr>\|:CommandT apps/ui/web/channels<cr>
-map <leader>uuc :CommandTFlush<cr>\|:CommandT apps/ui/web/controllers<cr>
-map <leader>uuv :CommandTFlush<cr>\|:CommandT apps/ui/web/views<cr>
-map <leader>uug :CommandTFlush<cr>\|:CommandT apps/ui/config<cr>
-map <leader>uuf :CommandTFlush<cr>\|:CommandT apps/ui<cr>
-map <leader>uur :vsplit apps/ui/web/router.ex<cr>
+" Admin layer
+map <leader>uaa :CommandTFlush<cr>\|:CommandT apps/admin/assets<cr>
+map <leader>uap :CommandTFlush<cr>\|:CommandT apps/admin/lib/admin/web/templates<cr>
+map <leader>uat :CommandTFlush<cr>\|:CommandT apps/admin/test<cr>
+map <leader>uan :CommandTFlush<cr>\|:CommandT apps/admin/lib/admin/web/channels<cr>
+map <leader>uac :CommandTFlush<cr>\|:CommandT apps/admin/lib/admin/web/controllers<cr>
+map <leader>uav :CommandTFlush<cr>\|:CommandT apps/admin/lib/admin/web/views<cr>
+map <leader>uag :CommandTFlush<cr>\|:CommandT apps/admin/config<cr>
+map <leader>uaf :CommandTFlush<cr>\|:CommandT apps/admin<cr>
+map <leader>uar :vsplit apps/admin/lib/admin/web/router.ex<cr>
+
+
+" Patient layer
+map <leader>paa :CommandTFlush<cr>\|:CommandT apps/patient/assets<cr>
+map <leader>pap :CommandTFlush<cr>\|:CommandT apps/patient/lib/patient/web/templates<cr>
+map <leader>pat :CommandTFlush<cr>\|:CommandT apps/patient/test<cr>
+map <leader>pan :CommandTFlush<cr>\|:CommandT apps/patient/lib/patient/web/channels<cr>
+map <leader>pac :CommandTFlush<cr>\|:CommandT apps/patient/lib/patient/web/controllers<cr>
+map <leader>pav :CommandTFlush<cr>\|:CommandT apps/patient/lib/patient/web/views<cr>
+map <leader>pag :CommandTFlush<cr>\|:CommandT apps/patient/config<cr>
+map <leader>paf :CommandTFlush<cr>\|:CommandT apps/patient<cr>
+map <leader>par :vsplit apps/patient/lib/patient/web/router.ex<cr>
+
+" Practitioner layer
+map <leader>pra :CommandTFlush<cr>\|:CommandT apps/practitioner/assets<cr>
+map <leader>prp :CommandTFlush<cr>\|:CommandT apps/practitioner/lib/practitioner/web/templates<cr>
+map <leader>prt :CommandTFlush<cr>\|:CommandT apps/practitioner/test<cr>
+map <leader>prn :CommandTFlush<cr>\|:CommandT apps/practitioner/lib/practitioner/web/channels<cr>
+map <leader>prc :CommandTFlush<cr>\|:CommandT apps/practitioner/lib/practitioner/web/controllers<cr>
+map <leader>prv :CommandTFlush<cr>\|:CommandT apps/practitioner/lib/practitioner/web/views<cr>
+map <leader>prg :CommandTFlush<cr>\|:CommandT apps/practitioner/config<cr>
+map <leader>prf :CommandTFlush<cr>\|:CommandT apps/practitioner<cr>
+map <leader>prr :vsplit apps/practitioner/lib/practitioner/web/router.ex<cr>
+
+" Main layer
+map <leader>maa :CommandTFlush<cr>\|:CommandT apps/main/assets<cr>
+map <leader>map :CommandTFlush<cr>\|:CommandT apps/main/lib/main_web/templates<cr>
+map <leader>mat :CommandTFlush<cr>\|:CommandT apps/main/test<cr>
+map <leader>man :CommandTFlush<cr>\|:CommandT apps/main/lib/main_web/channels<cr>
+map <leader>mac :CommandTFlush<cr>\|:CommandT apps/main/lib/main_web/controllers<cr>
+map <leader>mav :CommandTFlush<cr>\|:CommandT apps/main/lib/main_web/views<cr>
+map <leader>mag :CommandTFlush<cr>\|:CommandT apps/main/config<cr>
+map <leader>maf :CommandTFlush<cr>\|:CommandT apps/main<cr>
+map <leader>mar :vsplit apps/main/lib/main/web/router.ex<cr>
 
 " Map windows
 map <leader>mv :vsplit <cr>
@@ -419,7 +454,7 @@ map <leader>p :PromoteToLet<cr>
 autocmd FileType apache setlocal commentstring=#\ %s
 
 "Command-T ignore
-set wildignore=node_modules/**,dist/**,tmp/**,_build/**,bower_components/**,deps/**,_build/**,rel/releases/***
+set wildignore=node_modules/**,dist/**,tmp/**,_build/**,builds/**,bower_components/**,deps/**,rel/releases/***
 
 "Read .config files as XML
 au BufRead,BufNewFile *.config     set filetype=xml
