@@ -13,8 +13,9 @@ Plug 'tpope/vim-markdown'
 Plug 'Townk/vim-autoclose'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/closetag.vim'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'slim-template/vim-slim'
 Plug 'heartsentwined/vim-emblem'
@@ -23,11 +24,39 @@ Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'posva/vim-vue'
+Plug 'mattn/emmet-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'c-brenn/phoenix.vim'
+Plug 'tpope/vim-projectionist'
+Plug 'slashmili/alchemist.vim'
+Plug 'w0rp/ale'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 
 syntax on
 filetype plugin indent on
+
+let g:gutentags_cache_dir = '~/.tags_cache'
+let g:alchemist_tag_disable = 1
+let g:jsx_ext_required = 0
+
+" Emmet configs
+" let g:user_emmet_leader_key='<C-m>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+" Ale configs
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_completion_enabled = 1
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
 
 " Noel - after pathogen are loaded
 set nocompatible
