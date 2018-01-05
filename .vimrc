@@ -81,7 +81,7 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmov
 
 set mouse=ia "  Enable your track pad interaction
-set clipboard=unnamed
+set clipboard=unnamedplus
 vnoremap <C-c> "*y
 set antialias " Macvim: smooth fonts
 "set listchars=tab:▸\
@@ -127,20 +127,44 @@ map <leader>pr :vsplit web/router.ex<cr>
 " Db layer
 map <leader>uds :CommandTFlush<cr>\|:CommandT apps/db/lib/schemas<cr>
 map <leader>udl :CommandTFlush<cr>\|:CommandT apps/db/lib<cr>
+map <leader>udc :CommandTFlush<cr>\|:CommandT apps/db/lib/repos<cr>
 map <leader>udt :CommandTFlush<cr>\|:CommandT apps/db/test<cr>
 map <leader>udg :CommandTFlush<cr>\|:CommandT apps/db/config<cr>
+map <leader>udp :CommandTFlush<cr>\|:CommandT apps/db/priv<cr>
 map <leader>udf :CommandTFlush<cr>\|:CommandT apps/db<cr>
 
-" UI layer
-map <leader>uus :CommandTFlush<cr>\|:CommandT apps/ui/web/static<cr>
-map <leader>uup :CommandTFlush<cr>\|:CommandT apps/ui/web/templates<cr>
-map <leader>uut :CommandTFlush<cr>\|:CommandT apps/ui/test<cr>
-map <leader>uun :CommandTFlush<cr>\|:CommandT apps/ui/web/channels<cr>
-map <leader>uuc :CommandTFlush<cr>\|:CommandT apps/ui/web/controllers<cr>
-map <leader>uuv :CommandTFlush<cr>\|:CommandT apps/ui/web/views<cr>
-map <leader>uug :CommandTFlush<cr>\|:CommandT apps/ui/config<cr>
-map <leader>uuf :CommandTFlush<cr>\|:CommandT apps/ui<cr>
-map <leader>uur :vsplit apps/ui/web/router.ex<cr>
+" Payorlink layer
+map <leader>ups :CommandTFlush<cr>\|:CommandT apps/payor_link/assets<cr>
+map <leader>upp :CommandTFlush<cr>\|:CommandT apps/payor_link/lib/payor_link/web/templates<cr>
+map <leader>upt :CommandTFlush<cr>\|:CommandT apps/payor_link/test<cr>
+map <leader>upn :CommandTFlush<cr>\|:CommandT apps/payor_link/lib/payor_link/web/channels<cr>
+map <leader>upc :CommandTFlush<cr>\|:CommandT apps/payor_link/lib/payor_link/web/controllers<cr>
+map <leader>upv :CommandTFlush<cr>\|:CommandT apps/payor_link/lib/payor_link/web/views<cr>
+map <leader>upg :CommandTFlush<cr>\|:CommandT apps/payor_link/config<cr>
+map <leader>upf :CommandTFlush<cr>\|:CommandT apps/payor_link<cr>
+map <leader>upr :vsplit apps/payor_link/lib/payor_link/web/router.ex<cr>
+
+" Memberlink layer
+map <leader>ums :CommandTFlush<cr>\|:CommandT apps/member_link/assets<cr>
+map <leader>ump :CommandTFlush<cr>\|:CommandT apps/member_link/lib/member_link_web/templates<cr>
+map <leader>umt :CommandTFlush<cr>\|:CommandT apps/member_link/test<cr>
+map <leader>umn :CommandTFlush<cr>\|:CommandT apps/member_link/lib/member_link_web/channels<cr>
+map <leader>umc :CommandTFlush<cr>\|:CommandT apps/member_link/lib/member_link_web/controllers<cr>
+map <leader>umv :CommandTFlush<cr>\|:CommandT apps/member_link/lib/member_link_web/views<cr>
+map <leader>umg :CommandTFlush<cr>\|:CommandT apps/member_link/config<cr>
+map <leader>umf :CommandTFlush<cr>\|:CommandT apps/member_link<cr>
+map <leader>umr :vsplit apps/member_link/lib/member_link_web/router.ex<cr>
+
+" Accountlink layer
+map <leader>uas :CommandTFlush<cr>\|:CommandT apps/account_link/assets<cr>
+map <leader>uap :CommandTFlush<cr>\|:CommandT apps/account_link/lib/account_link_web/templates<cr>
+map <leader>uat :CommandTFlush<cr>\|:CommandT apps/account_link/test<cr>
+map <leader>uan :CommandTFlush<cr>\|:CommandT apps/account_link/lib/account_link_web/channels<cr>
+map <leader>uac :CommandTFlush<cr>\|:CommandT apps/account_link/lib/account_link_web/controllers<cr>
+map <leader>uav :CommandTFlush<cr>\|:CommandT apps/account_link/lib/account_link_web/views<cr>
+map <leader>uag :CommandTFlush<cr>\|:CommandT apps/account_link/config<cr>
+map <leader>uaf :CommandTFlush<cr>\|:CommandT apps/account_link<cr>
+map <leader>uar :vsplit apps/account_link/lib/account_link_web/router.ex<cr>
 
 " Map windows
 map <leader>mv :vsplit <cr>
