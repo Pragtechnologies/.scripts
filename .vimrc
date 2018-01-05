@@ -13,8 +13,9 @@ Plug 'tpope/vim-markdown'
 Plug 'Townk/vim-autoclose'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/closetag.vim'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'slim-template/vim-slim'
 Plug 'heartsentwined/vim-emblem'
@@ -23,11 +24,40 @@ Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'posva/vim-vue'
+Plug 'mattn/emmet-vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'c-brenn/phoenix.vim'
+Plug 'tpope/vim-projectionist'
+Plug 'slashmili/alchemist.vim'
+Plug 'w0rp/ale'
+Plug 'vim-airline/vim-airline'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
 
 syntax on
 filetype plugin indent on
+
+let g:gutentags_cache_dir = '~/.tags_cache'
+let g:alchemist_tag_disable = 1
+let g:jsx_ext_required = 0
+
+" Emmet configs
+" let g:user_emmet_leader_key='<C-m>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+" Ale configs
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_completion_enabled = 1
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
 
 " Noel - after pathogen are loaded
 set nocompatible
@@ -165,6 +195,47 @@ map <leader>uav :CommandTFlush<cr>\|:CommandT apps/account_link/lib/account_link
 map <leader>uag :CommandTFlush<cr>\|:CommandT apps/account_link/config<cr>
 map <leader>uaf :CommandTFlush<cr>\|:CommandT apps/account_link<cr>
 map <leader>uar :vsplit apps/account_link/lib/account_link_web/router.ex<cr>
+
+" Data layer
+map <leader>sds :CommandTFlush<cr>\|:CommandT apps/data/lib/schemas<cr>
+map <leader>sdc :CommandTFlush<cr>\|:CommandT apps/data/lib/contexts<cr>
+map <leader>sdl :CommandTFlush<cr>\|:CommandT apps/data/lib<cr>
+map <leader>sdt :CommandTFlush<cr>\|:CommandT apps/data/test<cr>
+map <leader>sdg :CommandTFlush<cr>\|:CommandT apps/data/config<cr>
+map <leader>sdf :CommandTFlush<cr>\|:CommandT apps/data<cr>
+
+" Admin layer
+map <leader>saa :CommandTFlush<cr>\|:CommandT apps/admin/assets<cr>
+map <leader>sap :CommandTFlush<cr>\|:CommandT apps/admin/lib/admin/web/templates<cr>
+map <leader>sat :CommandTFlush<cr>\|:CommandT apps/admin/test<cr>
+map <leader>san :CommandTFlush<cr>\|:CommandT apps/admin/lib/admin/web/channels<cr>
+map <leader>sac :CommandTFlush<cr>\|:CommandT apps/admin/lib/admin/web/controllers<cr>
+map <leader>sav :CommandTFlush<cr>\|:CommandT apps/admin/lib/admin/web/views<cr>
+map <leader>sag :CommandTFlush<cr>\|:CommandT apps/admin/config<cr>
+map <leader>saf :CommandTFlush<cr>\|:CommandT apps/admin<cr>
+map <leader>sar :vsplit apps/admin/lib/admin/web/router.ex<cr>
+
+" Patient layer
+map <leader>saa :CommandTFlush<cr>\|:CommandT apps/patient/assets<cr>
+map <leader>sap :CommandTFlush<cr>\|:CommandT apps/patient/lib/patient/web/templates<cr>
+map <leader>sat :CommandTFlush<cr>\|:CommandT apps/patient/test<cr>
+map <leader>san :CommandTFlush<cr>\|:CommandT apps/patient/lib/patient/web/channels<cr>
+map <leader>sac :CommandTFlush<cr>\|:CommandT apps/patient/lib/patient/web/controllers<cr>
+map <leader>sav :CommandTFlush<cr>\|:CommandT apps/patient/lib/patient/web/views<cr>
+map <leader>sag :CommandTFlush<cr>\|:CommandT apps/patient/config<cr>
+map <leader>saf :CommandTFlush<cr>\|:CommandT apps/patient<cr>
+map <leader>sar :vsplit apps/patient/lib/patient/web/router.ex<cr>
+
+" Practitioner layer
+map <leader>sra :CommandTFlush<cr>\|:CommandT apps/practitioner/assets<cr>
+map <leader>srp :CommandTFlush<cr>\|:CommandT apps/practitioner/lib/practitioner/web/templates<cr>
+map <leader>srt :CommandTFlush<cr>\|:CommandT apps/practitioner/test<cr>
+map <leader>srn :CommandTFlush<cr>\|:CommandT apps/practitioner/lib/practitioner/web/channels<cr>
+map <leader>src :CommandTFlush<cr>\|:CommandT apps/practitioner/lib/practitioner/web/controllers<cr>
+map <leader>srv :CommandTFlush<cr>\|:CommandT apps/practitioner/lib/practitioner/web/views<cr>
+map <leader>srg :CommandTFlush<cr>\|:CommandT apps/practitioner/config<cr>
+map <leader>srf :CommandTFlush<cr>\|:CommandT apps/practitioner<cr>
+map <leader>srr :vsplit apps/practitioner/lib/practitioner/web/router.ex<cr>
 
 " Map windows
 map <leader>mv :vsplit <cr>
@@ -443,7 +514,7 @@ map <leader>p :PromoteToLet<cr>
 autocmd FileType apache setlocal commentstring=#\ %s
 
 "Command-T ignore
-set wildignore=node_modules/**,dist/**,tmp/**,_build/**,bower_components/**,deps/**,_build/**,rel/releases/***
+set wildignore=node_modules/**,dist/**,tmp/**,_build/**,builds/**,bower_components/**,deps/**,rel/releases/***
 
 "Read .config files as XML
 au BufRead,BufNewFile *.config     set filetype=xml

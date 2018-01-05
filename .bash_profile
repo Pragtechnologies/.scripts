@@ -24,3 +24,6 @@ alias f="xdg-open"
 # Phoenix Aliases
 alias ms="mix phoenix.server"
 alias mps="mix phx.server"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
